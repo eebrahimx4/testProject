@@ -1,0 +1,237 @@
+
+/* التنسيق العام */
+body {
+  font-family: 'Tajawal', sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  padding-bottom: 70px;
+}
+
+.support {
+  background-color: #4a6bff;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.support a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 18px;
+}
+
+/* صورة الغلاف */
+.cover-image img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+/* قسم الدعوة */
+.referral-section {
+  padding: 15px;
+}
+
+.referral-card {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.referral-card .card-title {
+  color: #4a6bff;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.referral-input {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
+  text-align: center;
+  direction: ltr;
+}
+
+.btn-copy {
+  background-color: #4a6bff;
+  color: white;
+  border: none;
+  border-radius: 0 10px 10px 0;
+}
+
+.btn-copy:hover {
+  background-color: #3a5bef;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.btn-share {
+  border-radius: 10px;
+  padding: 8px 15px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.whatsapp {
+  background-color: #25D366;
+  color: white;
+}
+
+.telegram {
+  background-color: #0088cc;
+  color: white;
+}
+
+/* قسم المكافآت */
+.rewards-section {
+  padding: 0 15px;
+}
+
+.rewards-card {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  color: #4a6bff;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.levels-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.level-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.level-icon {
+  background-color: #f0f4ff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: #4a6bff;
+  font-size: 20px;
+}
+
+.level-card h4 {
+  color: #444;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.friends-count {
+  font-weight: bold;
+  color: #4a6bff;
+  margin-bottom: 10px;
+}
+
+.friends-count span {
+  font-weight: normal;
+  color: #666;
+  font-size: 14px;
+}
+
+.progress {
+  height: 8px;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.progress-bar {
+  background-color: #4a6bff;
+  border-radius: 4px;
+}
+
+/* Footer */
+.footer-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #666;
+  font-size: 12px;
+}
+
+.nav-item i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.nav-item.active {
+  color: #4a6bff;
+}
+
+/* الرسائل */
+.alert {
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+}
+
+
+
+.newText{
+  background-color: #a9bed1;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0px 10px;
+  border-radius: 10px;
+  margin: 0px 10px;
+}
+
+
+.coloring{
+  background-color: red;
+  text-decoration: none;
+  outline: none;
+}
+
+
+
+
+
+

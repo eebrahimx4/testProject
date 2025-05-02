@@ -1,0 +1,150 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فاكهتي | معلومات الشركة</title>
+    <link rel="stylesheet" href="{% static 'css/company.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    {% block content %}
+    
+<!-- Header -->
+    <header>
+        <div class="support"> 
+            <a href=""><i class='bx bxl-graphql'>V9.5</i></a>
+            <div class="supp">
+            <a href="https://t.me/fakeGroup10" target="_blank"><i class='bx bx-support'></i></a>
+           <a href="#"><i class='bx bxs-bell-plus'></i></a>
+            </div>
+        </div>
+    </header>
+
+
+
+
+
+
+    <div class="company-page">
+        <!-- هيدر الصفحة -->
+        <header class="company-header">
+            <div class="header-overlay"></div>
+            <h1>DFC  <img src="{% static 'image/company.png' %}" alt="" width="50"><span>لتجارة الفواكه العالمية</span> </h1>
+            <p>نربط بين المزارعين والمستثمرين حول العالم منذ 1899</p>
+        </header>
+    
+
+        <!-- محتوى الصفحة -->
+        <div class="company-content">
+            <!-- القسم الأول: عن الشركة -->
+            <section class="info-card">
+                <div class="card-icon">
+                    <i class='bx bx-info-circle'></i>
+                </div>
+                <h2>من نحن! </h2>
+                <p>شركة رائدة في تجارة الفواكه العالمية، نعمل كحلقة وصل بين المزارعين المحليين والمستثمرين الدوليين. نضمن جودة المنتج من الشجرة حتى المستهلك النهائي.</p>
+            </section>
+
+            <!-- إحصائيات الشركة -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class='bx bx-globe'></i>
+                    <h3>+15</h3>
+                    <p>دولة نتعامل معها</p>
+                </div>
+                <div class="stat-item">
+                    <i class='bx bx-leaf'></i>
+                    <h3>+200</h3>
+                    <p>نوع فاكهة مختلفة</p>
+                </div>
+                <div class="stat-item">
+                    <i class='bx bx-group'></i>
+                    <h3>+500</h3>
+                    <p>مزارع شريك</p>
+                </div>
+                <div class="stat-item">
+                    <i class='bx bx-line-chart'></i>
+                    <h3>+50M</h3>
+                    <p>دولار حجم تداول سنوي</p>
+                </div>
+            </div>
+
+            <!-- رؤية ورسالة -->
+            <div class="mission-vision">
+                <section class="mission">
+                    <h2><i class='bx bx-target-lock'></i> رؤيتنا</h2>
+                    <p>أن نكون الجسر الأكثر كفاءة بين منتجي الفواكة والمستثمرين العالميين، مع الحفاظ على أعلى معايير الجودة والاستدامة.</p>
+                </section>
+                <section class="vision">
+                    <h2><i class='bx bx-bulb'></i> رسالتنا</h2>
+                    <p>توفير منصة شفافة وعادلة لجميع الأطراف، مع تحسين سلسلة التوريد لتقديم أفضل المنتجات بأفضل الأسعار.</p>
+                </section>
+            </div>
+
+            <!-- فريق الإدارة -->
+            <section class="team-section">
+                <h2><i class='bx bx-user-voice'></i>شركة دول للأغذية</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="{% static 'image/DFC.webp' %}" alt="المدير التنفيذي">
+                        <h3> جيمس دول</h3>
+                        <p> تأسست شركة Dole Food Company في عام 1851 في هاواي على يد صموئيل 
+                        نورثروب كاسل وأموس ستار كوك تحت اسم Castle & Cooke. بدأت الشركة كشركة تجارية عامة، ثم تحولت لاحقًا إلى التركيز على زراعة وتوزيع الفواكه والخضروات، خاصة
+                         الموز والأناناس، تحت اسم Dole الذي أصبح العلامة التجارية الرئيسية للشركة. في عام 1899، أصبح جيمس دراموند دول، الذي يُعتبر
+                         "أبو صناعة الأناناس"، جزءًا من الشركة، مما ساهم في نموها الكبير في هذا القطاع.</p>
+                        <div class="social-links">
+                            <a href="#"><i class='bx bxl-linkedin'></i></a>
+                            <a href="#"><i class='bx bxl-twitter'></i></a>
+                        </div>
+                    </div>
+                    <!-- يمكن إضافة المزيد من أعضاء الفريق -->
+                </div>
+            </section>
+
+            <!-- شركاؤنا -->
+            <section class="partners">
+                <h2><i class='bx bx-handshake'></i> شركاؤنا</h2>
+                <div class="partners-logos">
+                    <img src="{% static 'image/us1.png' %}" alt="شريك 1">
+                    <img src="{% static 'image/us2.png' %}" alt="شريك 2">
+                    <img src="{% static 'image/us3.avif' %}" alt="شريك 3">
+                </div>
+            </section>
+        </div>
+    </div>
+
+<!-- Footer -->
+    <div class="Foter">
+               
+        <div class="box">
+            <a href="{% url 'index' %}"><i class='bx bxs-home' ></i>الرئيسيه</a>
+            
+        </div>
+        <div class="box">
+            <a href="{% url 'tasks' %}"><i class='bx bx-task' ></i>المهام</a>
+            
+        </div>
+        <div class="box">
+            <a href="{% url 'friends' %}"><i class='bx bxs-group' ></i> الاصدقاء </a>
+            
+        </div>
+        <div class="box">
+            <a href="{% url 'profile' %}"><i class='bx bxs-user-circle' ></i>انا</a>
+           
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

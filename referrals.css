@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    
+  }
+
+body { 
+    background-color: #f8f9fa; font-family: 'Cairo', sans-serif; direction: rtl; 
+}
+
+.card { 
+    cursor: pointer; transition: 0.3s; 
+}
+
+.card:hover { 
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); 
+}
+
+.details { 
+    display: none; margin-top: 10px;
+}
+
+
+.support{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+
+
+/* تنسيق الفوتر */
+
+.Foter {
+    display: flex;
+    justify-content: space-around;
+    background: #10223d;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .Foter .box {
+    text-align: center;
+  }
+  
+  .Foter .box a {
+    color: #a9bed1;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  
+  .Foter .box i {
+    font-size: 20px;
+    margin-bottom: 3px;
+  }
+
+
+
+
+
+
+
+
+
+

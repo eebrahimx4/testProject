@@ -1,0 +1,307 @@
+
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.company-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* هيدر الصفحة */
+.support a , i{
+    font-size: 20px;
+    margin: 0 5px;
+}
+.company-header {
+    position: relative;
+    height: 200px;
+    background: #10223d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 34, 61, 0.8);
+}
+
+.company-header h1 {
+    position: relative;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.company-header h1 span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+.company-header p {
+    position: relative;
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+/* البطاقات المعلوماتية */
+.info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    text-align: center;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -50px auto 20px;
+    color: white;
+    font-size: 30px;
+}
+
+.info-card h2 {
+    color: #10223d;
+    margin-top: 0;
+}
+
+/* الإحصائيات */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.stat-item {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-item i {
+    font-size: 40px;
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.stat-item h3 {
+    font-size: 2rem;
+    color: #10223d;
+    margin: 10px 0;
+}
+
+/* الرؤية والرسالة */
+.mission-vision {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 50px 0;
+}
+
+@media (max-width: 768px) {
+    .mission-vision {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mission, .vision {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.mission h2, .vision h2 {
+    color: #10223d;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* فريق العمل */
+.team-section {
+    margin: 60px 0;
+    text-align: center;
+}
+
+.team-section h2 {
+    color: #10223d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.team-member {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 5px solid #f1f1f1;
+}
+
+.social-links {
+    margin-top: 15px;
+}
+
+.social-links a {
+    color: #10223d;
+    font-size: 20px;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #4CAF50;
+}
+
+/* شركاؤنا */
+.partners {
+    margin: 60px 0;
+    text-align: center;
+}
+
+.partners h2 {
+    color: #10223d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.partners-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+
+.partners-logos img {
+    max-height: 80px;
+    max-width: 150px;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.partners-logos img:hover {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+/* Footer */
+
+.Foter {
+    display: flex;
+    justify-content: space-around;
+    background: #10223d;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .Foter .box {
+    text-align: center;
+  }
+  
+  .Foter .box a {
+    color: #a9bed1;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  
+  .Foter .box i {
+    font-size: 20px;
+    margin-bottom: 3px;
+  }
+  
+  /* تنسيق الصفحة النشطة */
+  .Foter .box.active a {
+    color: #4CAF50; /* لون النص */
+  }
+  
+  .Foter .box.active i {
+    color: #4CAF50; /* لون الأيقونة */
+    text-shadow: 0 0 5px #4caf5080; /* توهج خفيف */
+  }
+  
+  .Foter .box.active {
+    position: relative;
+  }
+  
+  .Foter .box.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background: #4CAF50;
+    border-radius: 2px;
+  }
+
+.support{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #10113d;
+}
+.support a , i{
+    color: #fff;
+}

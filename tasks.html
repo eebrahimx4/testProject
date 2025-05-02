@@ -1,0 +1,269 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+
+<head>
+    <!-- SweetAlert2 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Tasks</title>
+    <link rel="stylesheet" href="{% static 'css/tasks.css' %}">
+</head>
+
+<body>
+    
+
+    {% block content %}
+    
+    <div class="contener">
+        <!-- Header -->
+        <header>
+            <div class="support"> 
+                <a href=""><i class='bx bxl-graphql'>V9.5</i></a>
+                <div class="supp">
+                <a href="https://t.me/fakeGroup10"  target="_blank"><i class='bx bx-support'></i></a>
+                <a href="#"><i class='bx bxs-bell-plus'></i></a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content For all Page -->
+        <div class="content">
+
+       <!-- Search Products -->
+    <div class="newSearch">
+        <input type="search" placeholder="ابحث عن التاجر" class="search_input" id="searchInput">
+    </div>
+
+           <!-- open the Cart in Matches -->
+    <div class="open-modal">
+        
+ 
+      <!-- data in for loop js -->
+      <div id="matchesContainer"></div>
+      
+    </div>
+
+
+          
+
+
+
+    <div class="modal-overlay" id="walletModal">
+      {% csrf_token %}
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">×</span>
+    
+        <div class="wallet-box">
+          <h2>رصيد الحساب</h2>
+          <div class="balance" id="walletBalance">{{ request.user.fullprofile.wallet }}</div>
+    
+          <div class="transaction-row">
+            <div class="box">
+              <label>الربح المقدر</label>
+              <div id="estimatedProfit">0.00</div>
+            </div>
+            <div class="box">
+              <label>مبلغ المعاملة</label>
+              <div id="transactionAmount">0.00</div>
+            </div>
+          </div>
+    
+          <div class="row-info">
+            <p>رسوم المعالجة: 0%</p>
+            <p>معدل الدفع: 3.00%</p>
+            <p>VIP أرباح: 0%</p>
+          </div>
+    
+          <div class="allocate-row">
+            <button onclick="setMaxAmount()">الكل</button>
+            <input type="number" value="0.00" id="amountInput" oninput="updateProfit()">
+          </div>
+    
+          <button class="charge-btn" onclick="openRecharge()">إعادة الشحن</button>
+    
+          <div class="action-buttons">
+            <button class="cancel-btn" onclick="closeModal()">إلغاء</button>
+            <button class="confirm-btn" onclick="handleConfirm(event)">تأكيد</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+                <!-- Foter -->
+                <div class="boxes">
+                    <div class="Foter">
+                   
+                        <div class="box">
+                            <a href="{% url 'index' %}"><i class='bx bxs-home' ></i>الرئيسيه</a>
+  
+                        </div>
+                        <div class="box">
+                            <a href="{% url 'tasks' %}"><i class='bx bx-customize'></i>المهام</a>
+
+                        </div>
+                        <div class="box">
+                            <a href="{% url 'friends' %}"><i class='bx bxs-group'></i>الاصدقاء</a>
+
+                        </div>
+                        <div class="box">
+                            <a href="{% url 'profile' %}"><i class='bx bxs-user-circle' ></i>انا</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+      
+
+        
+
+    <script src="{% static 'js/tasks.js' %}"></script>
+
+
+    <script>
+      window.csrfToken = "{{ csrf_token }}";
+  
+      function updateProfit() {
+          const amountInput = document.getElementById('amountInput').value;
+          const amount = parseFloat(amountInput) || 0;
+          const profit = amount * 0.03;
+          document.getElementById('estimatedProfit').textContent = profit.toFixed(2);
+          document.getElementById('transactionAmount').textContent = amount.toFixed(2);
+      }
+  
+      function setMaxAmount() {
+          const walletBalance = parseFloat(document.getElementById('walletBalance').textContent);
+          document.getElementById('amountInput').value = walletBalance.toFixed(2);
+          updateProfit();
+      }
+  
+      function closeModal() {
+          document.getElementById('walletModal').style.display = 'none';
+      }
+  
+      function openRecharge() {
+          alert('إعادة الشحن: تحت التنفيذ');
+      }
+  
+      async function handleConfirm(event) {
+          event.preventDefault();
+          const confirmButton = document.querySelector('.confirm-btn');
+          confirmButton.disabled = true;
+          confirmButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري المعالجة...';
+  
+          const amount = parseFloat(document.getElementById('amountInput').value) || 0;
+  
+          try {
+              const response = await fetch('/accounts/process_profit/', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRFToken': getCsrfToken(),
+                  },
+                  body: JSON.stringify({ amount: amount }),
+              });
+  
+              const data = await response.json();
+  
+              if (data.success) {
+                  document.getElementById('walletBalance').textContent = data.new_balance;
+  
+                  const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      showConfirmButton: false,
+                      timer: 3000,
+                      timerProgressBar: true,
+                      iconColor: '#198754',
+                      customClass: {
+                          popup: 'colored-toast'
+                      },
+                      didOpen: (toast) => {
+                          toast.onmouseenter = Swal.stopTimer;
+                          toast.onmouseleave = Swal.resumeTimer;
+                      }
+                  });
+  
+                  Toast.fire({
+                      icon: 'success',
+                      title: 'تمت العملية بنجاح!',
+                      text: `الرصيد الجديد: ${data.new_balance}`,
+                  });
+  
+                  closeModal();
+              } else if (data.cooldown) {
+                  startCooldown(data.remaining_seconds || 60);
+                  Swal.fire({
+                      icon: 'warning',
+                      title: 'انتظر قليلًا',
+                      text: `يرجى الانتظار ${data.remaining_seconds} ثانية قبل المحاولة مرة أخرى.`,
+                      confirmButtonText: 'حسناً',
+                      confirmButtonColor: '#ffc107'
+                  });
+              } else {
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'خطأ',
+                      text: data.error || 'حدث خطأ غير متوقع',
+                      confirmButtonText: 'حسناً',
+                      confirmButtonColor: '#dc3545'
+                  });
+              }
+          } catch (error) {
+              Swal.fire({
+                  icon: 'error',
+                  title: 'خطأ في الاتصال',
+                  text: 'تعذر الاتصال بالخادم',
+                  confirmButtonText: 'حسناً',
+                  confirmButtonColor: '#dc3545'
+              });
+          } finally {
+              confirmButton.disabled = false;
+              confirmButton.innerHTML = 'تأكيد';
+          }
+      }
+  
+      function getCsrfToken() {
+          return window.csrfToken;
+      }
+  
+      // ✅ عدّ تنازلي عند محاولة مبكرة
+      function startCooldown(seconds) {
+          const confirmButton = document.querySelector('.confirm-btn');
+          confirmButton.disabled = true;
+  
+          let remaining = seconds;
+          const originalText = 'تأكيد';
+  
+          const interval = setInterval(() => {
+              confirmButton.textContent = `انتظر ${remaining}ث`;
+              remaining--;
+  
+              if (remaining <= 0) {
+                  clearInterval(interval);
+                  confirmButton.disabled = false;
+                  confirmButton.textContent = originalText;
+              }
+          }, 1000);
+      }
+  </script>
+  
+    {% endblock %}
+  
+
+
+
+
+
+    
+</body>
+
+</html>
+

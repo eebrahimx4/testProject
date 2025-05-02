@@ -1,0 +1,173 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+
+<head>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/CSS/profile.css">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+
+<body>
+    {% block content %}
+    <div class="contener">
+        <!-- My Profile -->
+        <div class="profile-container">
+            <div class="profile-header">
+                <img src="{% static 'image/profilee.jpg' %}" alt="صورة البروفيل" class="profile-pic">
+                <div class="kyc">
+                    <img src="{% static 'image/vip-card.png' %}" alt="" width="20">
+                {% if user.is_authenticated %}
+                <h1 class="username"> {{ user.username }}</h1>
+                <i class='bx bxs-check-circle'></i>
+                {% else %}
+                 <p>أنت غير مسجل الدخول</p>
+                {% endif %}
+                </div>
+                <p class="balance">الرصيد: <span id="balance">{{ request.user.fullprofile.wallet }}</span> جنيه</p>
+    
+                <ul class="SSS">
+                    <div class="box">
+                        <a href="{% url 'diposit' %}">
+                    <li>
+                        <i class="fa-solid fa-upload"></i>
+                        <p> انسحاب</p>
+                    </li>
+                        </a>
+                </div>
+                <div class="box">
+                        <a href="{% url 'withdraw' %}">
+                    <li>
+                        <i class="fa-solid fa-download"></i> 
+                        <p>اعاده الشحن</p>
+                    </li>
+                        </a>
+                </div>
+                <div class="box1">
+                        <a href="{% url 'hestory' %}">
+                    <li>
+                        <img src="{% static 'image/hestory.png' %}" alt="hestory" width="20">
+                        <p> السجل</p>
+                    </li>
+                        </a>
+                </div>
+                </ul>
+    
+            </div>
+            <div class="settings">
+                <h2>الإعدادات</h2>
+                <ul>
+                    <li>
+                        <a href="{% url 'login' %}" > 
+                            <div class="startt">
+                            <span> <i class='bx bx-edit-alt'></i>  مستخدم الدخول </span>
+                            <i class='bx bx-caret-left' ></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'signup' %}" > 
+                            <div class="startt">
+                            <span> <i class='bx bx-edit-alt'></i> تسجيل مستخدم جديد </span>
+                            <i class='bx bx-caret-left' ></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" > 
+                            <div class="startt">
+                            <span> <i class='bx bx-edit-alt'></i> تعديل معلومات الصفحه الشخصية  </span>
+                            <i class='bx bx-caret-left' ></i>
+                            </div>
+                        </a>
+                    </li>
+    
+                    <li>
+                        <a href="{% url 'change_password' %}" >
+                            <div class="startt">
+                            <span> <i class='bx bx-shield-quarter'></i> مركز الامان </span>
+                            <i class='bx bx-caret-left' ></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'friends' %}" > 
+                            <div class="startt">
+                            <span> <i class='bx bx-share-alt'></i> رابط الاحاله</span>
+                            <i class='bx bx-caret-left' ></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://t.me/fakeGroup10" target="_blank"> 
+                            <div class="startt">
+                            <span> <i class='bx bx-support'></i> خدمه الدعم الفني   </span>
+                            <i class='bx bx-caret-left' ></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+    
+                        <a href="https://t.me/fakeGroup10" target="_blank">  
+                            <div class="startt">
+                            <span> <i class='bx bxl-telegram' ></i> قناتنا الرسميه</span>
+                            <i class='bx bx-caret-left' ></i>
+                            </div>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" id="submitLogout" class="logout_user">Log out
+                     <i class='bx bx-log-in-circle'></i>
+                    </button>
+                </form>
+                    </li>
+                </ul>
+
+
+            </div>
+
+
+
+   <!-- Foter -->
+            <div class="boxes">
+                <div class="Foter">
+               
+                    <div class="box">
+                        <a href="{% url 'index' %}"><i class='bx bxs-home' ></i>الرئيسيه</a>
+                    </div>
+                    <div class="box">
+                        <a href="{% url 'tasks' %}"><i class='bx bx-customize'></i>المهام</a>
+                    </div>
+                    <div class="box">
+                        <a href="{% url 'friends' %}"><i class='bx bxs-group'></i>الاصدقاء</a>
+                    </div>
+                    <div class="box">
+                        <a href="{% url 'profile' %}"><i class='bx bxs-user-circle'></i>انا</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+    <script src="/js/profile.js"></script>
+    {% endblock %}
+</body>
+
+</html>
+
+
+
+
+
+

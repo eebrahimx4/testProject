@@ -1,0 +1,200 @@
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+    
+
+    {% block content %}
+    <div class="contener">
+        <!-- Header -->
+        <header>
+            <div class="support"> 
+                <a href=""><i class='bx bxl-graphql'>V9.5</i></a>
+                <div class="supp">
+                  <a href="https://t.me/fakeGroup10" target="_blank"><i class='bx bx-support'></i></a>
+                  <a href="#"><i class='bx bxs-bell-plus'></i></a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="content">
+            <div class="image">
+                <img id="slideshow" src="{% static 'image_table/bouns1.jpg' %}" alt="Logo" class="logo">
+          </div>
+        <!-- TexrBar -->
+            <div class="textbar">
+                <div class="marquee">
+                    <p>
+  نحن دائما معك، نساندك لتحقيق النجاح والوصول إلى أهدافك بكل ثقة، لكسب المال بطريقة آمنة ومستقرة، بطرق مبتكرة
+   وداعمة. نحن نؤمن بإمكاناتك ونعمل جاهدين لتوفير البيئة الأمثل لك. 
+  شكرا لتعاونك معنا، فهذا التعاون هو أساس نجاحنا المشترك.
+   معًا نحقق المزيد، ونصل إلى آفاق جديدة من التميز. نحن هنا من أجلك دائمًا!
+                   </p>
+
+            </div>
+            </div>
+
+            <!-- walet -->
+             <div class="walet">
+                <i class='bx bx-wallet-alt'></i>
+                <p> رصيد الحساب : {{ request.user.fullprofile.wallet }} </p>
+                <a href="{% url 'index' %}"><i class="fas fa-sync-alt icon"></i> </a>
+             </div>
+            
+            <!-- Boxes -->
+             <div class="boxes">
+                <div class="box">
+                    <a href="{% url 'gift' %}"><i class='bx bxs-gift'></i>هدية</a>
+                </div>
+                <div class="box">
+                    <a href="{% url 'withdraw' %}"><i class='bx bxs-wallet'></i>شحن</a>
+                   
+                </div>
+                <div class="box">
+                    <a href="{% url 'diposit' %}"><i class='bx bxs-cart-alt'></i>سحب</a>
+                 
+                </div>
+                <div class="box">
+                    <a href="https://t.me/fakeGroup10" target="_blank"><i class='bx bxs-phone-call'></i>الدعم</a>
+                    
+                </div>
+
+                
+                <!-- Foter -->
+
+                <div class="Foter">
+               
+                    <div class="box">
+                        <a href="{% url 'index' %}"><i class='bx bxs-home' ></i>الرئيسيه</a>
+                        
+                    </div>
+                    <div class="box">
+                        <a href="{% url 'tasks' %}"><i class='bx bx-customize'></i>المهام</a>
+                        
+                    </div>
+                    <div class="box">
+                        <a href="{% url 'friends' %}"><i class='bx bxs-group' ></i> الاصدقاء </a>
+                        
+                    </div>
+                    <div class="box">
+                        <a href="{% url 'profile' %}"><i class='bx bxs-user-circle' ></i>انا</a>
+                       
+                    </div>
+                </div>
+    </div>
+
+
+
+
+
+       <!-- Content Body -->
+    <div class="newText">
+        <p>الاحداث اليوميه </p>
+        <i class='bx bx-notepad'></i>
+    </div>
+
+
+    <!-- Test Code -->
+     
+
+
+
+    <!-- Boxis For All Data -->
+     <div class="newes">
+      <div class="newbox">
+        <div class="newbox1">
+            <a href="{% url 'agent' %}"><i class='bx bxs-user-plus'></i></a>
+            <a href="{% url 'agent' %}"><p> مكافأة الوكيل </p></a>
+        </div>
+        <div class="newbox3">
+            <a href="{% url 'company' %}"><i class='bx bxs-building-house' ></i></a>
+            <a href="{% url 'company' %}"><p> معلومات الشركة </p></a>
+        </div>
+      </div>
+     </div>
+        
+   
+
+    
+
+
+  <!-- عرض السحوبات -->
+  <div class="withdrawal-requests">
+    <h3><i class='bx bx-transfer-alt'></i> آخر طلبات الأيداع و السحب</h3>
+    <div class="users-container" id="usersContainer"></div>
+  </div>
+
+
+
+
+
+    <!-- عشان نفتح الخطه ويظهرلك المحفظه -->
+    <div class="modal-overlay" id="walletModal">
+        <div class="modal-content">
+          <span class="close-modal" onclick="closeModal()">×</span>
+      
+          <div class="wallet-box">
+            <h2>رصيد الحساب</h2>
+            <div class="balance">0.00</div>
+      
+            <div class="transaction-row">
+              <div class="box">
+                <label>الربح المقدر</label>
+                <div>0.00</div>
+              </div>
+              <div class="box">
+                <label>مبلغ المعاملة</label>
+                <div>0.00</div>
+              </div>
+            </div>
+      
+            <div class="row-info">
+              <p>رسوم المعالجة: 0%</p>
+              <p>معدل الدفع: 3.00%</p>
+              <p>VIP أرباح: 0%</p>
+            </div>
+      
+            <div class="allocate-row">
+              <button>تخصيص</button>
+              <button>الكل</button>
+              <input type="number" value="0.00">
+            </div>
+      
+            <button class="charge-btn">إعادة الشحن</button>
+      
+            <div class="action-buttons">
+              <button class="cancel-btn" onclick="closeModal()">إلغاء</button>
+              <button class="confirm-btn">تأكيد</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+  
+
+
+
+
+
+    <script src="{% static 'js/index.js' %}"></script>
+    {% endblock %}
+
+    
+</body>
+
+</html>
+

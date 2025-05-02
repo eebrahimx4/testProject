@@ -1,0 +1,279 @@
+
+{% load static %}
+
+{% block content %}
+<div class="wallet-container">
+    <div class="wallet-header">
+        <h2><i class="fas fa-wallet"></i> رصيد المحفظة</h2>
+        <div class="balance">{{ profile.wallet|floatformat:2 }} <span>جنيه</span></div>
+    </div>
+
+    <div class="investment-section">
+        <h3><i class="fas fa-chart-line"></i> استثمر أموالك</h3>
+        <div class="investment-box">
+            <div class="form-group">
+                <label>المبلغ المطلوب استثماره:</label>
+                <input type="number" id="investmentAmount" min="0" step="0.01" placeholder="0.00">
+                <button onclick="allocateAll()">الكل</button>
+            </div>
+            
+            <div class="profit-preview">
+                <p>الربح المتوقع: <span id="expectedProfit">0.00</span> جنيه</p>
+                <p>معدل العائد: 3% + <span id="vipBonus">{{ profile.vip_level }}</span>% (مكافأة VIP)</p>
+            </div>
+            
+            <button class="invest-btn" onclick="startInvestment()">بدء الاستثمار</button>
+        </div>
+    </div>
+
+    <div class="transactions-section">
+        <h3><i class="fas fa-history"></i> سجل المعاملات</h3>
+        <div class="transactions-list">
+            {% for transaction in transactions %}
+            <div class="transaction-item {{ transaction.transaction_type|lower }}">
+                <div class="transaction-icon">
+                    {% if transaction.transaction_type == 'PROFIT' %}
+                    <i class="fas fa-money-bill-wave"></i>
+                    {% elif transaction.transaction_type == 'INVESTMENT' %}
+                    <i class="fas fa-coins"></i>
+                    {% else %}
+                    <i class="fas fa-exchange-alt"></i>
+                    {% endif %}
+                </div>
+                <div class="transaction-details">
+                    <div class="transaction-header">
+                        <span class="transaction-type">{{ transaction.get_transaction_type_display }}</span>
+                        <span class="transaction-amount {% if transaction.transaction_type == 'PROFIT' %}positive{% else %}negative{% endif %}">
+                            {{ transaction.amount|floatformat:2 }} ج
+                        </span>
+                    </div>
+                    <div class="transaction-footer">
+                        <span class="transaction-date">{{ transaction.created_at|date:"Y-m-d H:i" }}</span>
+                        <span class="transaction-desc">{{ transaction.description }}</span>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="no-transactions">لا توجد معاملات سابقة</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+function allocateAll() {
+    const balance = parseFloat("{{ profile.wallet }}");
+    document.getElementById('investmentAmount').value = balance.toFixed(2);
+    calculateProfit();
+}
+
+function calculateProfit() {
+    const amount = parseFloat(document.getElementById('investmentAmount').value) || 0;
+    const vipBonus = parseFloat("{{ profile.vip_level }}") / 100;
+    const profit = amount * (0.03 + vipBonus);
+    document.getElementById('expectedProfit').textContent = profit.toFixed(2);
+}
+
+function startInvestment() {
+    const amount = parseFloat(document.getElementById('investmentAmount').value) || 0;
+    
+    if (amount <= 0) {
+        alert("الرجاء إدخال مبلغ صالح للاستثمار");
+        return;
+    }
+
+    if (amount > parseFloat("{{ profile.wallet }}")) {
+        alert("رصيدك غير كافي لهذا الاستثمار");
+        return;
+    }
+
+    // إظهار رسالة تحميل
+    showLoader("جاري معالجة الاستثمار...");
+
+    fetch("{% url 'invest' %}", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({ amount: amount })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            // تحديث الرصيد مباشرة
+            document.querySelector('.balance').textContent = data.new_balance + " جنيه";
+            
+            // إظهار رسالة النجاح
+            showSuccess("تم استثمار " + amount.toFixed(2) + " جنيه بنجاح!");
+            
+            // بدء العد التنازلي للإكمال التلقائي
+            setTimeout(() => {
+                completeInvestment(data.investment_id);
+            }, 5000);
+        } else {
+            showError(data.message);
+        }
+    })
+    .catch(error => {
+        showError("حدث خطأ أثناء معالجة الاستثمار");
+    });
+}
+
+function completeInvestment(investmentId) {
+    showLoader("جاري إضافة الأرباح إلى رصيدك...");
+
+    fetch("{% url 'complete_investment' %}", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({ investment_id: investmentId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            // تحديث الرصيد
+            document.querySelector('.balance').textContent = data.new_balance + " جنيه";
+            
+            // إعادة تحميل الصفحة لرؤية المعاملة الجديدة
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        } else {
+            showError(data.message);
+        }
+    });
+}
+
+// وظائف مساعدة للرسائل
+function showLoader(message) {
+    // تنفيذ عرض رسالة التحميل
+}
+
+function showSuccess(message) {
+    // تنفيذ عرض رسالة النجاح
+}
+
+function showError(message) {
+    // تنفيذ عرض رسالة الخطأ
+}
+</script>
+
+<style>
+.wallet-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.wallet-header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.balance {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.investment-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.investment-box {
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.invest-btn {
+    background-color: #4cc9f0;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.transactions-list {
+    margin-top: 20px;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.transaction-icon {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    color: #4361ee;
+}
+
+.transaction-details {
+    flex: 1;
+}
+
+.transaction-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.transaction-type {
+    font-weight: bold;
+}
+
+.transaction-amount.positive {
+    color: #2ecc71;
+}
+
+.transaction-amount.negative {
+    color: #e74c3c;
+}
+
+.transaction-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.no-transactions {
+    text-align: center;
+    padding: 20px;
+    color: #95a5a6;
+}
+</style>

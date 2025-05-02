@@ -1,0 +1,90 @@
+/* التنسيق العام */
+.support a{
+    text-decoration: none;
+    outline: none;
+    background: #3498db;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* أزرار التبويب */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.tab-btn.active {
+    background: #3498db;
+    color: white;
+}
+
+/* محتوى التبويب */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* قائمة العمليات */
+.transactions-list {
+    margin-top: 15px;
+}
+
+.transaction-card {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-right: 4px solid #2ecc71; /* لون الإيداع */
+}
+
+.transaction-card.withdrawal {
+    border-right-color: #e74c3c; /* لون السحب */
+}
+
+.transaction-amount {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.transaction-date {
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
