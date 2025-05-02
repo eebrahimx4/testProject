@@ -1,4 +1,4 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
 <head>
@@ -72,7 +72,7 @@
                     
                     <div class="levels-container">
 
-                    <a href="{% url 'referrals' %}" class="coloring">
+                    <a href="referrals.html" class="coloring">
                         <div class="level-card level-1">
                             <div class="level-icon">
                                 <img src="friends.png" alt="" width="30">
@@ -89,19 +89,19 @@
 
         <!-- Footer -->
         <div class="footer-nav">
-            <a href="index.html" class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+            <a href="index.html" class="nav-item  request.resolver_match.url_name == 'index' active">
                 <i class='bx bxs-home'></i>
                 <span>الرئيسية</span>
             </a>
-            <a href="tasks.html" class="nav-item {% if request.resolver_match.url_name == 'tasks' %}active{% endif %}">
+            <a href="tasks.html" class="nav-item  request.resolver_match.url_name == 'tasks' active ">
                 <i class='bx bx-customize'></i>
                 <span>المهام</span>
             </a>
-            <a href="friends.html" class="nav-item {% if request.resolver_match.url_name == 'friends' %}active{% endif %}">
+            <a href="friends.html" class="nav-item  request.resolver_match.url_name == 'friends' active">
                 <i class='bx bxs-group'></i>
                 <span>الأصدقاء</span>
             </a>
-            <a href="profile.html" class="nav-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
+            <a href="profile.html" class="nav-item request.resolver_match.url_name == 'profile' active">
                 <i class='bx bxs-user-circle'></i>
                 <span>حسابي</span>
             </a>
