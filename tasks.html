@@ -1,5 +1,4 @@
 
-{% load static %}
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
 
@@ -14,13 +13,13 @@
 <!-- Boxicons -->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Tasks</title>
-    <link rel="stylesheet" href="{% static 'css/tasks.css' %}">
+    <link rel="stylesheet" href="tasks.css">
 </head>
 
 <body>
     
 
-    {% block content %}
+
     
     <div class="contener">
         <!-- Header -->
@@ -57,13 +56,13 @@
 
 
     <div class="modal-overlay" id="walletModal">
-      {% csrf_token %}
+
       <div class="modal-content">
         <span class="close-modal" onclick="closeModal()">×</span>
     
         <div class="wallet-box">
           <h2>رصيد الحساب</h2>
-          <div class="balance" id="walletBalance">{{ request.user.fullprofile.wallet }}</div>
+          <div class="balance" id="walletBalance">0.00</div>
     
           <div class="transaction-row">
             <div class="box">
@@ -103,19 +102,19 @@
                     <div class="Foter">
                    
                         <div class="box">
-                            <a href="{% url 'index' %}"><i class='bx bxs-home' ></i>الرئيسيه</a>
+                            <a href="index.html"><i class='bx bxs-home' ></i>الرئيسيه</a>
   
                         </div>
                         <div class="box">
-                            <a href="{% url 'tasks' %}"><i class='bx bx-customize'></i>المهام</a>
+                            <a href="tasks.html"><i class='bx bx-customize'></i>المهام</a>
 
                         </div>
                         <div class="box">
-                            <a href="{% url 'friends' %}"><i class='bx bxs-group'></i>الاصدقاء</a>
+                            <a href="friends.html"><i class='bx bxs-group'></i>الاصدقاء</a>
 
                         </div>
                         <div class="box">
-                            <a href="{% url 'profile' %}"><i class='bx bxs-user-circle' ></i>انا</a>
+                            <a href="profile.html"><i class='bx bxs-user-circle' ></i>انا</a>
                         </div>
                     </div>
             </div>
@@ -124,11 +123,11 @@
 
         
 
-    <script src="{% static 'js/tasks.js' %}"></script>
+    <script src="js/tasks.js"></script>
 
 
     <script>
-      window.csrfToken = "{{ csrf_token }}";
+     
   
       function updateProfit() {
           const amountInput = document.getElementById('amountInput').value;
@@ -255,12 +254,8 @@
       }
   </script>
   
-    {% endblock %}
+
   
-
-
-
-
 
     
 </body>
