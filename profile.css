@@ -20,6 +20,7 @@ body {
   width: 100%;
   position: relative;
   flex-direction: column;
+  margin-bottom: 60px;
 }
 .support{
   display: flex;
