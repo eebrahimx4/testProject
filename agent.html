@@ -1,5 +1,4 @@
 
-{% load static %}
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
 
@@ -10,12 +9,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agent Page</title>
-    <link rel="stylesheet" href="{% static 'css/agent.css' %}">
+    <link rel="stylesheet" href="agent.css">
 </head>
 
 <body>
     
-    {% block content %}
+
     <div class="contener">
         <!-- Header -->
         <header>
@@ -37,13 +36,13 @@
              <div class="tableBody">
                 <!-- Text Bar -->
                  <div class="texrBar ">
-                    <h3> <span><img src="{% static 'image/table.png' %}" alt="" width="30"></span> جداول الارباح اليوميه</h3>
+                    <h3> <span><img src="image/table.png" alt="" width="30"></span> جداول الارباح اليوميه</h3>
                  </div>
                 <div class="tableImage py-3">
-                    <img src="{% static 'image/rel.jpg' %}" alt=""  width="100%" class="mb-3">
-                    <img src="{% static 'image_table/11.jpg' %}" alt=""  width="100%" class="mb-3">
-                    <img src="{% static 'image_table/12.jpg' %}" alt=""  width="100%" class="mb-3">
-                    <img src="{% static 'image_table/10.jpg' %}" alt="" width="100%" class="mb-3">
+                    <img src="image/rel.jpg" alt=""  width="100%" class="mb-3">
+                    <img src="image_table/11.jpg" alt=""  width="100%" class="mb-3">
+                    <img src="image_table/12.jpg" alt=""  width="100%" class="mb-3">
+                    <img src="image_table/10.jpg" alt="" width="100%" class="mb-3">
                 </div>
              </div>            
     
@@ -94,39 +93,31 @@
        
 
 
-
-
-
-
-
-
-
-
         <!-- Footer -->
         <div class="Foter">
                
             <div class="box">
-                <a href="{% url 'index' %}"><i class='bx bxs-home' ></i>الرئيسيه</a>
+                <a href="index.html"><i class='bx bxs-home' ></i>الرئيسيه</a>
                 
             </div>
             <div class="box">
-                <a href="{% url 'tasks' %}"><i class='bx bx-task' ></i>المهام</a>
+                <a href="tasks.html"><i class='bx bx-task' ></i>المهام</a>
                 
             </div>
             <div class="box">
-                <a href="{% url 'friends' %}"><i class='bx bxs-group' ></i> الاصدقاء </a>
+                <a href="friends.html"><i class='bx bxs-group' ></i> الاصدقاء </a>
                 
             </div>
             <div class="box">
-                <a href="{% url 'profile' %}"><i class='bx bxs-user-circle' ></i>انا</a>
+                <a href="profile.html"><i class='bx bxs-user-circle' ></i>انا</a>
                
             </div>
         </div>
     </div>
 
 
-<script src="{% static 'js/agent.js' %}"></script>
+<script src="js/agent.js"></script>
 
-{% endblock %}
+
 </body>
 </html>
