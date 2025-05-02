@@ -27,11 +27,11 @@ const matches = [
     year: "2025",
     time: "00:00:00",
     league: "Strawberry To Jackson",
-    img1:  "/static/image_products/33.jpg",
+    img1:  "image_products/33.jpg",
     team1: "Strawberry",
-    img2: "/static/image/usus.png",
+    img2: "image/usus.png",
     team2: "Jackson",
-    bg: "/static/image/ccc.jpg"
+    bg: "image/ccc.jpg"
   },
   {
     id: 5837294,
