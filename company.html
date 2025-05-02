@@ -1,17 +1,17 @@
 
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فاكهتي | معلومات الشركة</title>
-    <link rel="stylesheet" href="{% static 'css/company.css' %}">
+    <link rel="stylesheet" href="company.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
-    {% block content %}
+
     
 <!-- Header -->
     <header>
@@ -33,7 +33,7 @@
         <!-- هيدر الصفحة -->
         <header class="company-header">
             <div class="header-overlay"></div>
-            <h1>DFC  <img src="{% static 'image/company.png' %}" alt="" width="50"><span>لتجارة الفواكه العالمية</span> </h1>
+            <h1>DFC  <img src="image/company.png" alt="" width="50"><span>لتجارة الفواكه العالمية</span> </h1>
             <p>نربط بين المزارعين والمستثمرين حول العالم منذ 1899</p>
         </header>
     
@@ -90,7 +90,7 @@
                 <h2><i class='bx bx-user-voice'></i>شركة دول للأغذية</h2>
                 <div class="team-grid">
                     <div class="team-member">
-                        <img src="{% static 'image/DFC.webp' %}" alt="المدير التنفيذي">
+                        <img src="image/DFC.webp" alt="المدير التنفيذي">
                         <h3> جيمس دول</h3>
                         <p> تأسست شركة Dole Food Company في عام 1851 في هاواي على يد صموئيل 
                         نورثروب كاسل وأموس ستار كوك تحت اسم Castle & Cooke. بدأت الشركة كشركة تجارية عامة، ثم تحولت لاحقًا إلى التركيز على زراعة وتوزيع الفواكه والخضروات، خاصة
@@ -109,9 +109,9 @@
             <section class="partners">
                 <h2><i class='bx bx-handshake'></i> شركاؤنا</h2>
                 <div class="partners-logos">
-                    <img src="{% static 'image/us1.png' %}" alt="شريك 1">
-                    <img src="{% static 'image/us2.png' %}" alt="شريك 2">
-                    <img src="{% static 'image/us3.avif' %}" alt="شريك 3">
+                    <img src="image/us1.png" alt="شريك 1">
+                    <img src="image/us2.png" alt="شريك 2">
+                    <img src="image/us3.avif" alt="شريك 3">
                 </div>
             </section>
         </div>
@@ -121,27 +121,25 @@
     <div class="Foter">
                
         <div class="box">
-            <a href="{% url 'index' %}"><i class='bx bxs-home' ></i>الرئيسيه</a>
+            <a href="index.html"><i class='bx bxs-home' ></i>الرئيسيه</a>
             
         </div>
         <div class="box">
-            <a href="{% url 'tasks' %}"><i class='bx bx-task' ></i>المهام</a>
+            <a href="tasks.html"><i class='bx bx-task' ></i>المهام</a>
             
         </div>
         <div class="box">
-            <a href="{% url 'friends' %}"><i class='bx bxs-group' ></i> الاصدقاء </a>
+            <a href="friends.html"><i class='bx bxs-group' ></i> الاصدقاء </a>
             
         </div>
         <div class="box">
-            <a href="{% url 'profile' %}"><i class='bx bxs-user-circle' ></i>انا</a>
+            <a href="profile.html"><i class='bx bxs-user-circle' ></i>انا</a>
            
         </div>
     </div>
 
 
 
-
-{% endblock %}
 
 
 
