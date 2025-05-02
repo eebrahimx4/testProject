@@ -1,4 +1,3 @@
-{% load static %}
 
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
@@ -9,32 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/CSS/profile.css">
     <title>My Profile</title>
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="css/profile.css">
 </head>
 
 <body>
-    {% block content %}
+
     <div class="contener">
         <!-- My Profile -->
         <div class="profile-container">
             <div class="profile-header">
-                <img src="{% static 'image/profilee.jpg' %}" alt="صورة البروفيل" class="profile-pic">
+                <img src="profilee.jpg" alt="صورة البروفيل" class="profile-pic">
                 <div class="kyc">
                     <img src="{% static 'image/vip-card.png' %}" alt="" width="20">
-                {% if user.is_authenticated %}
-                <h1 class="username"> {{ user.username }}</h1>
+        
+                <h1 class="username"> Hima </h1>
                 <i class='bx bxs-check-circle'></i>
-                {% else %}
+       
                  <p>أنت غير مسجل الدخول</p>
-                {% endif %}
+         
                 </div>
-                <p class="balance">الرصيد: <span id="balance">{{ request.user.fullprofile.wallet }}</span> جنيه</p>
+                <p class="balance">الرصيد: <span id="balance">0.00</span> جنيه</p>
     
                 <ul class="SSS">
                     <div class="box">
-                        <a href="{% url 'diposit' %}">
+                        <a href="#">
                     <li>
                         <i class="fa-solid fa-upload"></i>
                         <p> انسحاب</p>
@@ -42,7 +40,7 @@
                         </a>
                 </div>
                 <div class="box">
-                        <a href="{% url 'withdraw' %}">
+                        <a href="#">
                     <li>
                         <i class="fa-solid fa-download"></i> 
                         <p>اعاده الشحن</p>
@@ -50,9 +48,9 @@
                         </a>
                 </div>
                 <div class="box1">
-                        <a href="{% url 'hestory' %}">
+                        <a href="#">
                     <li>
-                        <img src="{% static 'image/hestory.png' %}" alt="hestory" width="20">
+                        <img src="hestory.png" alt="hestory" width="20">
                         <p> السجل</p>
                     </li>
                         </a>
@@ -64,7 +62,7 @@
                 <h2>الإعدادات</h2>
                 <ul>
                     <li>
-                        <a href="{% url 'login' %}" > 
+                        <a href="#" > 
                             <div class="startt">
                             <span> <i class='bx bx-edit-alt'></i>  مستخدم الدخول </span>
                             <i class='bx bx-caret-left' ></i>
@@ -72,7 +70,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{% url 'signup' %}" > 
+                        <a href="#" > 
                             <div class="startt">
                             <span> <i class='bx bx-edit-alt'></i> تسجيل مستخدم جديد </span>
                             <i class='bx bx-caret-left' ></i>
@@ -97,7 +95,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{% url 'friends' %}" > 
+                        <a href="friends.html" > 
                             <div class="startt">
                             <span> <i class='bx bx-share-alt'></i> رابط الاحاله</span>
                             <i class='bx bx-caret-left' ></i>
@@ -125,8 +123,8 @@
 
                     <li>
                         
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
+                <form action="logout" method="post">
+                   
                     <button type="submit" id="submitLogout" class="logout_user">Log out
                      <i class='bx bx-log-in-circle'></i>
                     </button>
@@ -144,24 +142,24 @@
                 <div class="Foter">
                
                     <div class="box">
-                        <a href="{% url 'index' %}"><i class='bx bxs-home' ></i>الرئيسيه</a>
+                        <a href="index.html"><i class='bx bxs-home' ></i>الرئيسيه</a>
                     </div>
                     <div class="box">
-                        <a href="{% url 'tasks' %}"><i class='bx bx-customize'></i>المهام</a>
+                        <a href="tasks.html"><i class='bx bx-customize'></i>المهام</a>
                     </div>
                     <div class="box">
-                        <a href="{% url 'friends' %}"><i class='bx bxs-group'></i>الاصدقاء</a>
+                        <a href="tasks.html"><i class='bx bxs-group'></i>الاصدقاء</a>
                     </div>
                     <div class="box">
-                        <a href="{% url 'profile' %}"><i class='bx bxs-user-circle'></i>انا</a>
+                        <a href="profile.html"><i class='bx bxs-user-circle'></i>انا</a>
                     </div>
                 </div>
             </div>
 
 
 
-    <script src="/js/profile.js"></script>
-    {% endblock %}
+    <script src="profile.js"></script>
+
 </body>
 
 </html>
