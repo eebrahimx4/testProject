@@ -17,7 +17,6 @@
 <body>
     
 
-    {% block content %}
     <div class="contener">
         <!-- Header -->
         <header>
@@ -51,21 +50,21 @@
             <!-- walet -->
              <div class="walet">
                 <i class='bx bx-wallet-alt'></i>
-                <p> رصيد الحساب : {{ request.user.fullprofile.wallet }} </p>
+                <p> رصيد الحساب : 0.00 </p>
                 <a href="{% url 'index' %}"><i class="fas fa-sync-alt icon"></i> </a>
              </div>
             
             <!-- Boxes -->
              <div class="boxes">
                 <div class="box">
-                    <a href="{% url 'gift' %}"><i class='bx bxs-gift'></i>هدية</a>
+                    <a href="#"><i class='bx bxs-gift'></i>هدية</a>
                 </div>
                 <div class="box">
-                    <a href="{% url 'withdraw' %}"><i class='bx bxs-wallet'></i>شحن</a>
+                    <a href="#"><i class='bx bxs-wallet'></i>شحن</a>
                    
                 </div>
                 <div class="box">
-                    <a href="{% url 'diposit' %}"><i class='bx bxs-cart-alt'></i>سحب</a>
+                    <a href="#"><i class='bx bxs-cart-alt'></i>سحب</a>
                  
                 </div>
                 <div class="box">
@@ -79,19 +78,19 @@
                 <div class="Foter">
                
                     <div class="box">
-                        <a href="{% url 'index' %}"><i class='bx bxs-home' ></i>الرئيسيه</a>
+                        <a href="index.html"><i class='bx bxs-home' ></i>الرئيسيه</a>
                         
                     </div>
                     <div class="box">
-                        <a href="{% url 'tasks' %}"><i class='bx bx-customize'></i>المهام</a>
+                        <a href="tasks.html"><i class='bx bx-customize'></i>المهام</a>
                         
                     </div>
                     <div class="box">
-                        <a href="{% url 'friends' %}"><i class='bx bxs-group' ></i> الاصدقاء </a>
+                        <a href="friends.html"><i class='bx bxs-group' ></i> الاصدقاء </a>
                         
                     </div>
                     <div class="box">
-                        <a href="{% url 'profile' %}"><i class='bx bxs-user-circle' ></i>انا</a>
+                        <a href="profile.html"><i class='bx bxs-user-circle' ></i>انا</a>
                        
                     </div>
                 </div>
@@ -117,12 +116,12 @@
      <div class="newes">
       <div class="newbox">
         <div class="newbox1">
-            <a href="{% url 'agent' %}"><i class='bx bxs-user-plus'></i></a>
-            <a href="{% url 'agent' %}"><p> مكافأة الوكيل </p></a>
+            <a href="#"><i class='bx bxs-user-plus'></i></a>
+            <a href="#"><p> مكافأة الوكيل </p></a>
         </div>
         <div class="newbox3">
-            <a href="{% url 'company' %}"><i class='bx bxs-building-house' ></i></a>
-            <a href="{% url 'company' %}"><p> معلومات الشركة </p></a>
+            <a href="#"><i class='bx bxs-building-house' ></i></a>
+            <a href="#"><p> معلومات الشركة </p></a>
         </div>
       </div>
      </div>
@@ -191,7 +190,7 @@
 
 
     <script src="index.js"></script>
-    {% endblock %}
+
 
     
 </body>
