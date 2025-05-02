@@ -8,11 +8,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/friends.css' %}">
+    <link rel="stylesheet" href="friends.css">
 </head>
 
 <body>
-    {% block content %}
+
     <div class="container-fluid p-0">
         <!-- Header -->
         <header class="app-header">
@@ -27,7 +27,7 @@
 
         <!-- صورة الغلاف -->
         <section class="cover-image">
-            <img src="{% static 'image/coverFriends.jpg' %}" alt="غلاف الأصدقاء" class="img-fluid">
+            <img src="coverFriends.jpg" alt="غلاف الأصدقاء" class="img-fluid">
         </section>
 
         <!-- قسم رابط الدعوة -->
@@ -75,10 +75,10 @@
                     <a href="{% url 'referrals' %}" class="coloring">
                         <div class="level-card level-1">
                             <div class="level-icon">
-                                <img src="{% static '/image/friends.png' %}" alt="" width="30">
+                                <img src="friends.png" alt="" width="30">
                             </div>
                             <h4> الأصدقاء من جميع المستويات</h4>
-                            <p class="friends-count">{{ level1_count }} <span>أصدقاء مباشرين</span></p>
+                            <p class="friends-count">0 <span>أصدقاء مباشرين</span></p>
                          
                         </div>
                     </a>
@@ -89,19 +89,19 @@
 
         <!-- Footer -->
         <div class="footer-nav">
-            <a href="{% url 'index' %}" class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+            <a href="index.html" class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
                 <i class='bx bxs-home'></i>
                 <span>الرئيسية</span>
             </a>
-            <a href="{% url 'tasks' %}" class="nav-item {% if request.resolver_match.url_name == 'tasks' %}active{% endif %}">
+            <a href="tasks.html" class="nav-item {% if request.resolver_match.url_name == 'tasks' %}active{% endif %}">
                 <i class='bx bx-customize'></i>
                 <span>المهام</span>
             </a>
-            <a href="{% url 'friends' %}" class="nav-item {% if request.resolver_match.url_name == 'friends' %}active{% endif %}">
+            <a href="friends.html" class="nav-item {% if request.resolver_match.url_name == 'friends' %}active{% endif %}">
                 <i class='bx bxs-group'></i>
                 <span>الأصدقاء</span>
             </a>
-            <a href="{% url 'profile' %}" class="nav-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
+            <a href="profile.html" class="nav-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
                 <i class='bx bxs-user-circle'></i>
                 <span>حسابي</span>
             </a>
@@ -109,8 +109,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'js/friends.js' %}"></script>
-    {% endblock %}
+    <script src="friends.js"></script>
+
 </body>
 </html>
 
